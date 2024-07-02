@@ -1,0 +1,31 @@
+import { TokenMetadata, FTStorageBalance, RefFiViewFunctionOptions, Config } from './types';
+import { Transaction } from './types';
+export declare const REPLACE_TOKENS: string[];
+export declare const init_env: (env: string, indexerUrl?: string | undefined, config?: Config | undefined) => {
+    config: Config;
+    REF_FI_CONTRACT_ID: string;
+    WRAP_NEAR_CONTRACT_ID: string;
+    REF_TOKEN_ID: string;
+    REF_META_DATA: {
+        decimals: number;
+        icon: string;
+        id: string;
+        name: string;
+        symbol: string;
+    };
+    WNEAR_META_DATA: TokenMetadata;
+};
+export declare const refFiViewFunction: ({ methodName, args, }: RefFiViewFunctionOptions) => Promise<any>;
+export declare const ftViewFunction: (tokenId: string, { methodName, args }: RefFiViewFunctionOptions) => Promise<any>;
+export declare const ftGetStorageBalance: (tokenId: string, AccountId: string) => Promise<FTStorageBalance | null>;
+export declare const ftGetBalance: (tokenId: string, AccountId: string) => Promise<any>;
+export declare const getTotalPools: () => Promise<any>;
+export declare const ftGetTokenMetadata: (id: string, tag?: string | undefined) => Promise<TokenMetadata>;
+export declare const ftGetTokensMetadata: (tokenIds?: string[] | undefined, allTokens?: Record<string, TokenMetadata> | undefined) => Promise<Record<string, TokenMetadata>>;
+export declare const getGlobalWhitelist: () => Promise<string[]>;
+export declare const getUserRegisteredTokens: (AccountId?: string | undefined) => Promise<string[]>;
+export declare const getAccountNearBalance: (accountId: string) => Promise<string>;
+export declare const nearDepositTransaction: (amount: string) => Transaction;
+export declare const nearWithdrawTransaction: (amount: string) => Transaction;
+export declare const refDCLSwapViewFunction: ({ methodName, args, }: RefFiViewFunctionOptions) => Promise<any>;
+export declare const DCLSwapGetStorageBalance: (tokenId: string, AccountId: string) => Promise<any>;
